@@ -1,0 +1,6 @@
+venv
+*.pyc
+.ipynb_checkpoints
+.vscode
+.env
+db.sqlite3/*
