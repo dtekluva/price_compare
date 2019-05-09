@@ -126,17 +126,48 @@ def new_product(product):
         """ Add the product information to the products table in the database"""
 
         with connection.cursor() as cursor:
+                # print(products)
+
+                sql = """insert into products (name, budget)
+                        VALUES('{}', '{}')
+                        """.format(product.name, product.budget)
+
+                cursor.execute(sql)
+                connection.commit()
 
 
-            # print(products)
-            sql = """insert into products (name, budget)
-                VALUES('{}', '{}')
-                """.format(product.name, product.budget)
+# def view_product(product):
+      
+#         """ This function is used to retrieve products from the database"""
+
+#         with connection.cursor() as cursor:
+
+#                 sql = """ SELECT id, name, budget, datemodified 
+#                         FROM {} WHERE 
+#                         name = '{}'
+#                         """.format(product, product.name)
+                        
+#                 cursor.execute(sql)
+
+#                 return cursor.fetchone()
 
 
-            cursor.execute(sql)
+# def remove_product(product):
+      
+#         """ This function is used to retrieve products from the database"""
 
-            connection.commit()
+#         with connection.cursor() as cursor:
+
+#                 sql = """ SELECT id, name, budget, datemodified 
+#                         FROM {} WHERE 
+#                         name = '{}'
+#                         """.format(product, product.name)
+                        
+#                 cursor.execute(sql)
+
+#                 return cursor.fetchone()
+
+
 
 
 
