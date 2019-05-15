@@ -34,7 +34,7 @@ class User: #create a user object
 
             except: #populate the table in the database if it already exists
 
-                connect.add(self)
+                connect.add_user(self)
                 print(f"Table {connect.table_name} Exists .!!")
         else: #Username already exists
             print("\nUsername already exists please try another !!!\n")
@@ -72,7 +72,6 @@ class User: #create a user object
         self.date_modified = user_data['datemodified']
 
         print(f"username {self.username}\nemail {self.email} \nphone {self.phone}") #Print the information to screen
-
 
 user = User()
 # user.register()
