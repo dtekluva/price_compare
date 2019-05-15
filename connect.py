@@ -97,7 +97,11 @@ def products_table():
 
                 sql = f""" CREATE TABLE products
                         (id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-                        name VARCHAR(100), budget INT(100), date_modified TIMESTAMP)"""
+                        name VARCHAR(100), budget INT(100), date_modified TIMESTAMP,
+                        FOREIGN KEY user_id(id)
+                        REFERENCES users(id)
+                        ON UPDATE CASCADE
+                        ON DELETE RESTRICT)"""
 
                 cursor.execute(sql)
                 connection.commit()
@@ -136,20 +140,20 @@ def new_product(product):
                 connection.commit()
 
 
-# def view_product(product):
+def view_product(product):
       
-#         """ This function is used to retrieve products from the database"""
+        """ This function is used to retrieve products from the database"""
 
-#         with connection.cursor() as cursor:
+        with connection.cursor() as cursor:
 
-#                 sql = """ SELECT id, name, budget, datemodified 
-#                         FROM {} WHERE 
-#                         name = '{}'
-#                         """.format(product, product.name)
+                sql = """ SELECT id, name, budget, datemodified 
+                        FROM {} WHERE 
+                        name = '{}'
+                        """.format(product, product.name)
                         
-#                 cursor.execute(sql)
+                cursor.execute(sql)
 
-#                 return cursor.fetchone()
+                return cursor.fetchone()
 
 
 # def remove_product(product):
